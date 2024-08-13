@@ -50,9 +50,6 @@ export const signup = async (req: Request, res: Response) => {
   }
 };
 
-
-
-
 export const login = async (req: Request, res: Response) => {
   try {
     const { username, password } = req.body;
@@ -73,9 +70,23 @@ export const login = async (req: Request, res: Response) => {
       username: user.username,
       profilePic: user.profilePic,
     });
-  } catch (error:any) {
+  } catch (error: any) {
     console.log("Error in login controller ", error.message);
     res.status(500).json({ error: "internal server error" });
   }
 };
-export const logout = async (req: Request, res: Response) => {};
+
+export const logout = async (req: Request, res: Response) => {
+  try {
+    res.cookie("jwt", "", { maxAge: 0 });
+    res.status(200).json({ message: "Logged out succesfullt" });
+  } catch (error: any) {
+    console.log("Error in logout controller ", error.message);
+    res.status(500).json({ error: "internal server error" });
+  }
+};
+
+
+export const getMe=async(req:Request,res:Response)=>{
+    
+}

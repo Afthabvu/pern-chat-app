@@ -45,7 +45,7 @@ export const signup = async (req: Request, res: Response) => {
       return res.status(400).json({ error: "Invalid data" });
     }
   } catch (error: any) {
-    console.log("Error in signup controller ", error.message);
+    // console.log("Error in signup controller ", error.message);
     res.status(500).json({ error: "internal server error" });
   }
 };
@@ -71,7 +71,7 @@ export const login = async (req: Request, res: Response) => {
       profilePic: user.profilePic,
     });
   } catch (error: any) {
-    console.log("Error in login controller ", error.message);
+    // console.log("Error in login controller ", error.message);
     res.status(500).json({ error: "internal server error" });
   }
 };
@@ -81,7 +81,7 @@ export const logout = async (req: Request, res: Response) => {
     res.cookie("jwt", "", { maxAge: 0 });
     res.status(200).json({ message: "Logged out succesfullt" });
   } catch (error: any) {
-    console.log("Error in logout controller ", error.message);
+    // console.log("Error in logout controller ", error.message);
     res.status(500).json({ error: "internal server error" });
   }
 };
@@ -100,7 +100,7 @@ export const getMe = async (req: Request, res: Response) => {
       });
 
   } catch (error: any) {
-    console.log("Error in getMe controller ", error.message);
+    // console.log("Error in getMe controller ", error.message);
     res.status(500).json({ error: "internal server error" });
   }
 };

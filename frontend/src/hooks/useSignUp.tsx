@@ -26,7 +26,7 @@ const useSignUp = () => {
       if (!res.ok) throw new Error(data.error);
       setAuthUser(data);
     } catch (error: any) {
-      console.error(error.message);
+      // console.error(error.message);
       toast.error(error.message)
     } finally {
       setloading(false);

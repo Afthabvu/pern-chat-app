@@ -11,7 +11,7 @@ const useGetConversations = () => {
       try {
         const res = await fetch("/api/messages/conversations");
         const data = await res.json();
-        console.log(data)
+        // console.log(data)
         if (!res.ok) throw new Error(data.error);
         setConversations(data);
       } catch (error: any) {

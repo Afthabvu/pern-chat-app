@@ -10,8 +10,8 @@ const useSendMessage = () => {
     if (!selectedConversation) return null;
 
     setLoading(true);
-    console.log("hello from sendMessage");
-    console.log(message);
+    // console.log("hello from sendMessage");
+    // console.log(message);
     try {
       const res = await fetch(`/api/messages/send/${selectedConversation.id}`, {
         method: "POST",

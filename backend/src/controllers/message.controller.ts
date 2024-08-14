@@ -85,6 +85,7 @@ export const getMessages = async (req: Request, res: Response) => {
 };
 
 export const getUserForSidebar = async (req: Request, res: Response) => {
+  console.log("start")
   try {
     const authUserId = req.user.id;
     const users = await prisma.user.findMany({
@@ -99,6 +100,8 @@ export const getUserForSidebar = async (req: Request, res: Response) => {
         profilePic: true,
       },
     });
+    console.log("hello")
+    console.log(users);
     res.status(200).json(users);
   } catch (error: any) {
     console.log("Error in getUserForSidebar", error.message);

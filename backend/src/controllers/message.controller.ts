@@ -56,8 +56,11 @@ export const sendMessage = async (req: Request, res: Response) => {
 };
 
 export const getMessages = async (req: Request, res: Response) => {
+  console.log("Hello from getMessages")
+  console.log(req.user)
   try {
     const { id: userToChatId } = req.params;
+    console.log(userToChatId)
     const senderId = req.user.id;
 
     const conversation = await prisma.conversation.findFirst({
@@ -75,8 +78,9 @@ export const getMessages = async (req: Request, res: Response) => {
       },
     });
     if (!conversation) {
-      return res.status(200).json({ messages: [] });
+      return res.status(200).json([]);
     }
+    console.log("getmessages end here")
     res.status(200).json(conversation.messages);
   } catch (error: any) {
     console.log("Error in getMessage", error.message);

@@ -1,17 +1,27 @@
-const Message = () => {
+import { useAuthContext } from "../../context/AuthContext";
+import useConversation from "../../zustand/useConversation";
+import { extractTime } from "../../utils/extractTime";
+
+const Message = ({ message }: { message: MessageType }) => {
+  const { authUser } = useAuthContext(); //the person who is signed in
+  const { selectedConversation } = useConversation(); //the users who is there in db
+  const fromMe = message?.senderId === authUser?.id; //checks if the particular message is send by the authenticated user
+  const img = fromMe ? authUser?.profilePic : selectedConversation?.profilePic; //checks the meesage from which person and set their profilePic
+  const chatClass = fromMe ? "chat-end" : "chat-start";
+  const bubbleBg = fromMe ? "bg-blue-500" : "";
   return (
-    <div className="chat chat-end">
+    <div className={`chat ${chatClass}`}>
       <div className="chat-image avatar">
         <div className="w-6 md:w-10 rounded-full">
           <img
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+            src={img}
             alt="chat bubble"
           />
         </div>
       </div>
-      <p className="chat-bubble text-white bg-blue-500">message</p>
+      <p className="chat-bubble text-white bg-blue-500">{message.body}</p>
       <span className="chat-footer opacity-50 text-xs flex gap-1 items-center text-white">
-        createdAt
+        {extractTime(message.createdAt)}
       </span>
     </div>
   );

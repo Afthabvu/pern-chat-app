@@ -2,6 +2,8 @@ import { Request, Response } from "express";
 import prisma from "../db/prisma.js";
 
 export const sendMessage = async (req: Request, res: Response) => {
+  console.log("Hello from send message")
+  console.log(req.body)
   try {
     const { message } = req.body;
     const { id: receiverId } = req.params;

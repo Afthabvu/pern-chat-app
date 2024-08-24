@@ -27,7 +27,7 @@ const Login = () => {
             </label>
             <input
               type="text"
-              placeholder="Enter Username"
+              placeholder="Enter Username  eg:test"
               className="w-full input input-bordered h-10"
               value={inputs.username}
               onChange={(e) =>
@@ -41,7 +41,7 @@ const Login = () => {
             </label>
             <input
               type="password"
-              placeholder="Enter Password"
+              placeholder="Enter Password eg:test"
               className="w-full input input-bordered h-10"
               value={inputs.password}
               onChange={(e) =>
